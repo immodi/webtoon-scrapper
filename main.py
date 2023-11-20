@@ -3,7 +3,6 @@ import requests
 import helper
 from scrapy.http import HtmlResponse
 from scrapy.selector import Selector
-from pathlib import Path
 
 
 class WebtoonScrapper():
@@ -52,7 +51,7 @@ class WebtoonScrapper():
 
     def save_all_images(self, images_url_arr: list, chapter_num: int):
         # current_dir = f"{self.series_name}\\{chapter_num}"
-        current_dir = Path(self.series_name, str(chapter_num))
+        current_dir = os.path.join(self.series_name, str(chapter_num))
         helper.make_dir(current_dir)
         
         for i in range(images_url_arr.__len__()):

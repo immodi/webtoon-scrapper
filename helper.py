@@ -1,11 +1,10 @@
 import os
 import requests
 from zipfile import ZipFile
-from pathlib import Path
 
 
 def get_image(name: str, url: str, dir: str):
-    path = Path(dir, name)
+    path = os.path.join(dir, name)
     with open(f'{path}.jpg', 'wb') as handle:
         response = requests.get(url, stream=True)
 
