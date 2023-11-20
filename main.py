@@ -3,7 +3,7 @@ import requests
 import helper
 from scrapy.http import HtmlResponse
 from scrapy.selector import Selector
-
+import os
 
 class WebtoonScrapper():
     def __init__(self, series_name: str, link: str, starting_chapter: int, total_chapters: int, target_website: str):
