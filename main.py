@@ -55,10 +55,10 @@ class WebtoonScrapper():
         helper.make_dir(current_dir)
         
         for i in range(images_url_arr.__len__()):
-            helper.get_image(i+1, images_url_arr[i], current_dir)
+            helper.get_image(str(i+1), images_url_arr[i], current_dir)
             
 
 
 webtoon = WebtoonScrapper(sys.argv[1], sys.argv[2], int(sys.argv[3]), int(sys.argv[4]), sys.argv[5])
-webtoon.execute()
+ebtoon.execute()
 
