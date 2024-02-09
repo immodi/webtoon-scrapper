@@ -15,8 +15,7 @@ class WebtoonScrapper():
         
     def execute(self):
         selectors = {
-            # webtoon_source: (parent_element, next_chapter),
-            "topmanhua": ("page-break", "next_page"),
+            # webtoon_source: (parent_element_div, next_chapter),
             "manga18fx": ('page-break', 'navi-change-chapter-btn-next'),
             "toonily": ('page-break', 'next_page'),
         } 
@@ -31,12 +30,11 @@ class WebtoonScrapper():
                 images_url = Selector(response=response).response.css(f'.{selectors[self.target_website][0]} img::attr(src)').extract()
                 self.save_all_images(images_url, self.starting_chapter)
                 
-                if self.target_website == "manga18fx":
-                    self.link = "https://manga18fx.com/" + self.link
-                    self.link = "-".join(self.link.split("-")[0:-1]) + f"-{self.starting_chapter+1}"
-                    
                 try: 
                     self.link = Selector(response=response).css(f".{selectors[self.target_website][1]}::attr(href)").extract()[0]
+                    if self.target_website == "manga18fx":
+                        self.link = "https://manga18fx.com/" + self.link
+                        self.link = "-".join(self.link.split("-")[0:-1]) + f"-{self.starting_chapter+1}"
                 except IndexError:
                     break
                     
