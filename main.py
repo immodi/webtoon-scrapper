@@ -15,8 +15,8 @@ class WebtoonScrapper():
         
     def execute(self):
         selectors = {
-            # webtoon_source: (parent_element, next_chapter)
-            "hiperdex": ('page-break', 'next_page'),
+            # webtoon_source: (parent_element, next_chapter),
+            "topmanhua": ("page-break", "next_page"),
             "manga18fx": ('page-break', 'navi-change-chapter-btn-next'),
             "toonily": ('page-break', 'next_page'),
         } 
